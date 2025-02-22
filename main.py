@@ -8,6 +8,7 @@ DEVICE_NAME = "2022 paperwhite"
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--page", type=int, default=1, help="Page number to start from")
+parser.add_argument("--device", type=str, default=DEVICE_NAME, help="Name of your Kindle device")
 args = parser.parse_args()
 
 start_url = f"https://www.amazon.co.uk/hz/mycd/digital-console/contentlist/booksPurchases/dateDsc?pageNumber={args.page}"
@@ -54,7 +55,7 @@ with sync_playwright() as playwright:
 
             modal = dropdown_menu.locator(".DeviceDialogBox-module_container__1WOqR")
             devices = modal.get_by_role("listitem")
-            target_device = devices.filter(has_text=DEVICE_NAME)
+            target_device = devices.filter(has_text=args.device)
             target_device_radio = target_device.locator(".RadioButton-module_radio__1k8O3")
             target_device_radio.click()
 

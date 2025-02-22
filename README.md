@@ -16,11 +16,11 @@ On Windows:
 
 Sign in to amazon.co.uk in the browser, then run the script with uv:
 ```sh
-uv run main.py
+uv run main.py --device "Jane's Kindle"
 ```
 
 If something goes wrong, you can resume from a specific page:
 ```sh
-uv run main.py --page 6
+uv run main.py --device "Jane's Kindle" --page 6
 ```
 
